@@ -50,7 +50,7 @@ compass = 'ENWS'
 def compass2theta(c): return compass.find(str(c))
 def theta2compass(t): return compass[t]
 
-# Function to create dicts represntating points, rover states and state transforms
+# Function to create dicts representing points, rover states and state transforms
 def Point(x, y):  return {'x':x, 'y':y }
 def State(x, y, theta):  return {'x':x, 'y':y, 'theta':theta}
 def Xform(distance, dtheta): return { 'distance':distance, 'dtheta':dtheta}
@@ -85,7 +85,7 @@ def isValid(state):
             return False;
     return True;
 
-# Map commands to state transforms
+# Mappings of commands to state transforms
 moves = {'M':Xform(1,0), 'L':Xform(0,1), 'R':Xform(0,-1) }
 
 # Process a string of single letter movement commands
