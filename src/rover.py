@@ -62,8 +62,8 @@ def showState(state): return str(state['x']) + ' ' + str(state['y']) + ' ' + the
 # Apply a transform to a rover state
 def applyXform(state, xform): 
     theta = (state['theta'] + xform['dtheta']) % 4
-    x = state['x'] + int(round(math.cos(thetamath.pi/2.0)*xform['distance']))
-    y = state['y'] + int(round(math.sin(thetamath.pi/2.0)*xform['distance']))
+    x = state['x'] + int(round(math.cos(theta*math.pi/2.0)*xform['distance']))
+    y = state['y'] + int(round(math.sin(theta*math.pi/2.0)*xform['distance']))
     return State(x,y,theta)
 
 # The rover's environment comprises the plaateau boundary and the previous rovers
@@ -99,22 +99,22 @@ def performMoves(state, line):
     return state
 
 # Read a line from stdin and strip trailing spaces 
-def readLine(input): return sys.stdin.readline().rstrip('\r\n ')
+def readLine(): return sys.stdin.readline().rstrip('\r\n ')
   
 # Process a mars rover script according to the directions at the start of this file
 def processScript():
-    line = readLine(input)
+    line = readLine()
     if line:
         x1,y1 = map(int, line.split())
         boundary['ur'] = Point(x1, y1)
         while line:
-            line = readLine(input)
+            line = readLine()
             if line:
                 start = line.split()
                 x,y = map(int, start[:2])
                 theta = compass2theta(start[2])
                 state = State(x, y, theta)   
-                line = readLine(input)
+                line = readLine()
                 if line:
                     state = performMoves(state, line)
                 rovers.append(state)

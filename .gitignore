@@ -1,4 +1,6 @@
 .project
-.project
+.pydevproject
 *.pyc
 *.class
+output.txt
+
