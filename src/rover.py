@@ -42,7 +42,7 @@ This program moves a squad of robotic rovers around a rectangular plateau.
   		behaviour is not defined.
 '''
 
-import math
+from math import *
 import sys
 
 # Convert between compass point and angle theta 
@@ -62,8 +62,8 @@ def showState(state): return str(state['x']) + ' ' + str(state['y']) + ' ' + the
 # Apply a transform to a rover state
 def applyXform(state, xform): 
     theta = (state['theta'] + xform['dtheta']) % 4
-    x = state['x'] + int(round(math.cos(theta*math.pi/2.0)*xform['distance']))
-    y = state['y'] + int(round(math.sin(theta*math.pi/2.0)*xform['distance']))
+    x = state['x'] + int(round(cos(math.pi/2.0)*xform['distance']))
+    y = state['y'] + int(round(sin(math.pi/2.0)*xform['distance']))
     return State(x,y,theta)
 
 # The rover's environment comprises the plaateau boundary and the previous rovers
@@ -120,7 +120,7 @@ def processScript():
                 rovers.append(state)
                 print showState(state)
            
-if __name__ == "__main__":   
+if __name__ == '__main__':   
     processScript()
 
        
