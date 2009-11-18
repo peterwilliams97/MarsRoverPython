@@ -62,8 +62,8 @@ def showState(state): return str(state['x']) + ' ' + str(state['y']) + ' ' + the
 # Apply a transform to a rover state
 def applyXform(state, xform): 
     theta = (state['theta'] + xform['dtheta']) % 4
-    x = state['x'] + int(round(cos(math.pi/2.0)*xform['distance']))
-    y = state['y'] + int(round(sin(math.pi/2.0)*xform['distance']))
+    x = state['x'] + int(round(cos(pi/2.0)*xform['distance']))
+    y = state['y'] + int(round(sin(pi/2.0)*xform['distance']))
     return State(x,y,theta)
 
 # The rover's environment comprises the plaateau boundary and the previous rovers
